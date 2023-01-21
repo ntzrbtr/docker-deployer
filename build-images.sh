@@ -25,6 +25,6 @@ do
     cp Dockerfile.template $php_version/Dockerfile
     sed -i '' "s/%PHP-VERSION%/$php_version/" $php_version/Dockerfile
     sed -i '' "s/%DEPLOYER-VERSION%/$deployer_version/" $php_version/Dockerfile
-    docker build --file $php_version/Dockerfile -t ntzrbtr/deployer:php-$php_version-deployer-$deployer_version -t ntzrbtr/deployer:php-$php_version .
+    docker build --file $php_version/Dockerfile -t netzarbeiter/deployer:php-$php_version-deployer-$deployer_version -t netzarbeiter/deployer:php-$php_version .
     echo ""
 done

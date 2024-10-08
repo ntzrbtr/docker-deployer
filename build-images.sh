@@ -15,7 +15,7 @@ echo "Using Deployer v$deployer_version"
 echo ""
 
 # Define PHP versions.
-php_versions=(7.4 8.0 8.1 8.2)
+php_versions=(7.4 8.0 8.1 8.2 8.3)
 
 # Build images.
 for php_version in "${php_versions[@]}"

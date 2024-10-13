@@ -17,7 +17,7 @@ echo ""
 # Define PHP versions.
 php_versions=(7.4 8.0 8.1 8.2 8.3)
 
-# Build images.
+# Build and push images.
 for php_version in "${php_versions[@]}"
 do
     echo "Building image for PHP $php_version"
@@ -26,5 +26,10 @@ do
     sed -i '' "s/%PHP-VERSION%/$php_version/" $php_version/Dockerfile
     sed -i '' "s/%DEPLOYER-VERSION%/$deployer_version/" $php_version/Dockerfile
     docker build --file $php_version/Dockerfile -t netzarbeiter/deployer:php-$php_version-deployer-$deployer_version -t netzarbeiter/deployer:php-$php_version .
+    echo ""
+
+    echo "Pushing image for PHP $php_version"
+    docker push netzarbeiter/deployer:php-$php_version-deployer-$deployer_version
+    docker push netzarbeiter/deployer:php-$php_version
     echo ""
 done

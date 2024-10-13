@@ -9,3 +9,11 @@ The image adds tools for deployment:
 - `rsync`
 
 Repository: https://github.com/ntzrbtr/docker-deployer
+
+## Building images
+
+Use the `build.sh` script to build and push the images. The script takes the Deployer version as an argument:
+
+```bash
+./build.sh 7.4.1
+```

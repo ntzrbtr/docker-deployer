@@ -41,7 +41,7 @@ function build_and_push_image {
 for php_version in "${php_versions[@]}"
 do
     # Build and push platform-specific images.
-    build_and_push_image $php_version linux/arm64 arm64
+    build_and_push_image $php_version linux/arm64/v8 arm64
     build_and_push_image $php_version linux/amd64 amd64
 
     # Create and push multi-arch manifest.

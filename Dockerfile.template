@@ -10,15 +10,15 @@ RUN apk add \
     wget
 
 # Install Deployer.
-RUN wget https://github.com/deployphp/deployer/releases/download/v%DEPLOYER-VERSION%/deployer.phar -O /usr/local/bin/deployer && \
-    chmod +x /usr/local/bin/deployer && \
-    deployer --version
+RUN curl -f -L --retry 3 --retry-delay 3 -o /usr/local/bin/deployer https://github.com/deployphp/deployer/releases/download/v%DEPLOYER-VERSION%/deployer.phar
+RUN chmod +x /usr/local/bin/deployer
+RUN deployer --version
 
 # Install Composer.
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
 	php composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
-	php -r "unlink('composer-setup.php');" && \
-	composer --version
+	php -r "unlink('composer-setup.php');"
+RUN composer --version
 
 # Set up working directory.
 RUN mkdir /work
